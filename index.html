@@ -2,763 +2,714 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Bloom & Love | Romantic Bouquets & Gifts</title>
+  <title>LoveBloom – Bouquet & Gifts Store</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
       --primary: #ff4b7d;
-      --primary-dark: #e23565;
+      --primary-light: #ff9bb5;
+      --bg: #fff5f8;
+      --dark: #2b2b2b;
+      --card-bg: #ffffff;
       --accent: #ffb347;
-      --bg: #0f172a;
-      --card-bg: #111827;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --radius-lg: 18px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --radius-xl: 18px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
-      color: var(--text);
+      background: radial-gradient(circle at top left, #ffe1ec, #fff5f8 40%, #ffffff 80%);
+      color: var(--dark);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    /* HEADER / NAVBAR */
+    /* HEADER */
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.75));
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      background: linear-gradient(90deg, rgba(255, 245, 248, 0.9), rgba(255, 255, 255, 0.95));
+      border-bottom: 1px solid rgba(255, 192, 203, 0.4);
     }
 
-    .nav {
+    .nav-container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 14px 18px;
+      padding: 0.7rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 1rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 0.5rem;
       font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: 0.04em;
+      font-size: 1.3rem;
+      color: var(--primary);
     }
 
-    .logo-icon {
+    .logo span.icon {
       width: 34px;
       height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #fff0f5, #fb7185, #7c2d12);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffe6f0, #ff4b7d);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 22px rgba(248, 113, 113, 0.6);
+      color: #fff;
       font-size: 1.1rem;
+      box-shadow: var(--shadow-soft);
     }
 
-    .nav-links {
+    nav ul {
+      list-style: none;
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 1.2rem;
       font-size: 0.95rem;
     }
 
-    .nav-links a {
-      padding: 6px 10px;
+    nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
       border-radius: 999px;
-      color: var(--muted);
-      transition: all 0.2s ease;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(248, 113, 113, 0.15);
-    }
-
-    .btn-pill {
-      border-radius: 999px;
-      padding: 7px 16px;
-      background: linear-gradient(120deg, var(--primary), var(--accent));
-      border: none;
-      color: #0f172a;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(248, 113, 113, 0.5);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-
-    .btn-pill:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 14px 30px rgba(248, 113, 113, 0.7);
+    nav a:hover::after {
+      width: 100%;
     }
 
     .cart-pill {
-      border-radius: 999px;
-      padding: 6px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.8);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.4rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.8rem;
       cursor: pointer;
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-    }
-
-    .cart-pill:hover {
-      background: rgba(30, 64, 175, 0.6);
-      border-color: rgba(248, 250, 252, 0.8);
-      color: var(--text);
-      transform: translateY(-1px);
     }
 
     .cart-count {
-      min-width: 20px;
-      height: 20px;
-      border-radius: 999px;
       background: var(--primary);
-      color: #0f172a;
-      font-size: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.7rem;
     }
 
-    /* MAIN LAYOUT */
+    /* MAIN */
     main {
       flex: 1;
     }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 18px 40px;
-    }
-
-    /* HERO SECTION */
     .hero {
+      max-width: 1100px;
+      margin: 1.8rem auto 1.5rem;
+      padding: 1.4rem 1.2rem 0.2rem;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 32px;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.5rem;
       align-items: center;
-      margin-bottom: 40px;
     }
 
-    .hero-copy h1 {
-      font-size: clamp(2rem, 3vw + 0.5rem, 2.5rem);
-      line-height: 1.2;
-      margin-bottom: 10px;
+    .hero-text h1 {
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 0.7rem;
     }
 
-    .gradient-text {
-      background: linear-gradient(110deg, #fecaca, #fb7185, #fed7aa);
+    .hero-text h1 span {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
-      background-clip: text;
       color: transparent;
     }
 
-    .hero-copy p {
-      color: var(--muted);
+    .hero-text p {
+      color: #555;
+      margin-bottom: 1rem;
+      max-width: 90%;
       font-size: 0.98rem;
-      max-width: 480px;
-      margin-bottom: 18px;
     }
 
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
     }
 
-    .hero-badge {
+    .badge {
+      padding: 0.3rem 0.7rem;
       border-radius: 999px;
-      padding: 6px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: inline-flex;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.75rem;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.8);
+      gap: 0.25rem;
     }
 
-    .hero-cta {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-top: 4px;
+      gap: 0.7rem;
     }
 
-    .hero-secondary {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .hero-secondary span.dot {
-      width: 6px;
-      height: 6px;
+    .btn-primary, .btn-outline {
       border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.25);
-    }
-
-    .hero-card {
-      border-radius: 24px;
-      padding: 20px;
-      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.18), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), #020617 70%);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-inner {
-      border-radius: 18px;
-      padding: 16px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-
-    .hero-card-title {
-      display: flex;
-      justify-content: space-between;
+      padding: 0.55rem 1.1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 12px;
+      gap: 0.45rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, color 0.2s ease;
     }
 
-    .badge-soft {
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.15);
-      color: #bbf7d0;
-      font-size: 0.7rem;
-    }
-
-    .hero-main-visual {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .hero-bouquet {
-      height: 170px;
-      border-radius: 18px;
-      background: radial-gradient(circle at 20% 0, #fee2e2, #fb7185, #4b164c);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: #fff;
-      font-size: 2.4rem;
+      box-shadow: 0 10px 30px rgba(255, 75, 125, 0.4);
     }
 
-    .hero-bouquet span {
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(255, 75, 125, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 151, 171, 0.8);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-image {
       position: relative;
-      top: -12px;
     }
 
-    .hero-note {
-      border-radius: 16px;
-      padding: 10px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      font-size: 0.78rem;
-      color: var(--muted);
+    .hero-image-main {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      border: 4px solid #fff;
     }
 
-    .hero-note strong {
-      color: #e5e7eb;
+    .hero-image-main img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      bottom: 10%;
+      left: -8%;
+      background: #fff;
+      padding: 0.6rem 0.8rem;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      max-width: 190px;
+    }
+
+    .floating-card span {
       font-weight: 600;
     }
 
-    .hero-tagline {
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      margin-top: 10px;
+    .floating-card small {
+      color: #777;
+      font-size: 0.7rem;
     }
 
-    /* PRODUCT SECTION */
+    .floating-card .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ecc71;
+      margin-right: 4px;
+    }
+
+    .floating-card-footer {
+      display: flex;
+      align-items: center;
+      margin-top: 0.1rem;
+      font-size: 0.7rem;
+      color: #555;
+    }
+
+    /* PRODUCTS */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.2rem;
+    }
+
     .section-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
-      gap: 10px;
+      margin-bottom: 1rem;
     }
 
     .section-header h2 {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
     }
 
     .section-header p {
       font-size: 0.85rem;
-      color: var(--muted);
+      color: #777;
     }
 
-    .product-grid {
+    .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      gap: 1.2rem;
     }
 
     .product-card {
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.7), #020617);
-      border-radius: var(--radius-lg);
-      padding: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.26);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      position: relative;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, translate 0.18s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    }
+
+    .product-img-wrap {
       position: relative;
       overflow: hidden;
+      max-height: 200px;
     }
 
-    .product-image {
-      height: 150px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 0 0, #fee2e2, #fb7185, #4c1d95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
+    .product-img-wrap img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
     }
 
-    .product-tag {
+    .product-card:hover img {
+      transform: scale(1.07);
+    }
+
+    .tag {
       position: absolute;
-      top: 14px;
-      left: 14px;
-      padding: 4px 9px;
-      border-radius: 999px;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.62);
+      color: #fff;
       font-size: 0.7rem;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(248, 250, 252, 0.6);
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
     }
 
-    .product-body {
+    .product-content {
+      padding: 0.8rem 0.9rem 0.9rem;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 0.35rem;
     }
 
     .product-title {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 600;
     }
 
     .product-desc {
       font-size: 0.8rem;
-      color: var(--muted);
+      color: #666;
+      min-height: 34px;
     }
 
     .product-meta {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.85rem;
+      align-items: baseline;
+      margin-top: 0.1rem;
     }
 
     .price {
       font-weight: 700;
-      color: #f97316;
+      color: var(--primary);
+      font-size: 0.98rem;
     }
 
-    .badge-small {
+    .old-price {
       font-size: 0.75rem;
-      padding: 3px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--muted);
+      color: #999;
+      text-decoration: line-through;
+      margin-left: 6px;
+    }
+
+    .rating {
+      font-size: 0.75rem;
+      color: #f39c12;
     }
 
     .product-actions {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
     }
 
-    .btn-add {
+    .product-actions button {
       flex: 1;
-      border-radius: 999px;
-      padding: 7px 10px;
-      background: linear-gradient(120deg, var(--primary), var(--accent));
-      border: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-      box-shadow: 0 10px 22px rgba(248, 113, 113, 0.6);
-    }
-
-    .btn-add:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 14px 30px rgba(248, 113, 113, 0.8);
-    }
-
-    .btn-ghost {
-      margin-left: 10px;
-      border-radius: 999px;
-      padding: 7px 10px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: transparent;
       font-size: 0.8rem;
-      color: var(--muted);
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      padding: 0.4rem 0.6rem;
+      border-radius: 999px;
     }
 
-    .btn-ghost:hover {
-      background: rgba(30, 64, 175, 0.6);
-      border-color: rgba(248, 250, 252, 0.9);
-      color: var(--text);
+    .pill-muted {
+      background: #f7f7f7;
+      border: 1px solid #eee;
+      font-size: 0.74rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      color: #666;
+      margin-top: 0.15rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
     }
 
     /* FOOTER */
     footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
-      padding: 18px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      background: rgba(2, 6, 23, 0.98);
+      border-top: 1px solid rgba(255, 192, 203, 0.5);
+      background: #fff;
+      margin-top: auto;
     }
 
     .footer-inner {
       max-width: 1100px;
       margin: 0 auto;
+      padding: 0.9rem 1.2rem;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
       flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: #777;
     }
 
-    .footer-inner span strong {
-      color: #e5e7eb;
+    .footer-inner span.highlight {
+      color: var(--primary);
+      font-weight: 600;
     }
 
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
+        padding-top: 1rem;
       }
-      .hero-card {
+
+      .hero-text p {
+        max-width: 100%;
+      }
+
+      .hero-image {
         order: -1;
       }
-      .nav {
+
+      .nav-container {
         flex-wrap: wrap;
       }
-      .nav-links {
-        margin-left: auto;
-      }
-    }
 
-    @media (max-width: 540px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
-      .nav-links {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .hero-copy p {
-        max-width: 100%;
+
+      .floating-card {
+        left: 4%;
+        bottom: 6%;
       }
     }
   </style>
 </head>
 <body>
+  <!-- HEADER -->
   <header>
-    <nav class="nav">
+    <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">💐</div>
-        <div>Bloom & Love</div>
+        <span class="icon">💐</span>
+        <span>LoveBloom</span>
       </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="checkout.html">Checkout</a>
-        <button class="cart-pill" onclick="window.location.href='checkout.html'">
-          🛒 <span>Cart</span>
-          <div class="cart-count" id="cartCount">0</div>
-        </button>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Bouquets</a></li>
+          <li><a href="#products">Gifts</a></li>
+        </ul>
+      </nav>
+      <div class="cart-pill" onclick="goToCheckout()">
+        🛒 <span>Cart</span>
+        <span class="cart-count" id="cart-count">0</span>
       </div>
-    </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="page">
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-copy">
-          <h1>
-            Make their <span class="gradient-text">birthday night magical</span>
-            with curated couple bouquets & gifts.
-          </h1>
-          <p>
-            Handpicked romantic bouquets, candles, and surprise boxes designed
-            especially for couples. Same-day delivery available in major cities.
-          </p>
-          <div class="hero-badges">
-            <div class="hero-badge">✨ Couple-special curation</div>
-            <div class="hero-badge">🚚 Express midnight delivery</div>
-            <div class="hero-badge">🎁 Free handwritten note</div>
-          </div>
-          <div class="hero-cta">
-            <button class="btn-pill" onclick="scrollToProducts()">
-              Browse Birthday Combos
-              <span>↓</span>
-            </button>
-            <div class="hero-secondary">
-              <span class="dot"></span> <span>Trusted by 10,000+ celebrations</span>
-            </div>
-          </div>
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Celebrate <span>Love & Birthdays</span> with Perfect Bouquets.</h1>
+        <p>
+          Curated flower bouquets & romantic gift combos for couples – handpicked to make
+          every birthday feel like a love story. Same-day delivery available in major cities.
+        </p>
+        <div class="hero-badges">
+          <div class="badge">💘 Couple-special combos</div>
+          <div class="badge">🚚 Same-day & midnight delivery</div>
+          <div class="badge">🎁 Free handwritten message card</div>
         </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-card-title">
-              <div>
-                <div style="font-size:0.78rem; color:var(--muted);">Tonight’s Bestseller</div>
-                <div style="font-weight:600; margin-top:2px;">Midnight Surprise Couple Box</div>
-              </div>
-              <div class="badge-soft">Delivering till 12:30 AM</div>
-            </div>
-
-            <div class="hero-main-visual">
-              <div class="hero-bouquet">
-                <span>🌹🎂🎁</span>
-              </div>
-              <div class="hero-note">
-                <strong>Includes:</strong> premium rose bouquet, scented candle,
-                mini cake, fairy lights & custom note for your partner.
-                <div class="hero-tagline">Perfect for “You mean the world to me” moments.</div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <!-- PRODUCTS -->
-      <section id="productsSection">
-        <div class="section-header">
-          <div>
-            <h2>Birthday Bouquets & Couple Gifts</h2>
-            <p>Tap “Add to Cart” and complete your surprise in under a minute.</p>
-          </div>
-          <button class="btn-ghost" onclick="window.location.href='checkout.html'">
-            View Cart 🛒
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToProducts()">
+            Shop Birthday Bouquets
+            <span>→</span>
+          </button>
+          <button class="btn-outline" onclick="goToCheckout()">
+            View Cart
           </button>
         </div>
+      </div>
 
-        <div class="product-grid" id="productGrid">
-          <!-- Products inserted by JS -->
+      <div class="hero-image">
+        <div class="hero-image-main">
+          <!-- Real bouquet image from Unsplash -->
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Romantic bouquet for couples" />
         </div>
-      </section>
+        <div class="floating-card">
+          <span>“She absolutely loved it!” 💖</span>
+          <small>
+            Our <b>Midnight Rose Surprise</b> is the most-ordered birthday bouquet by couples this month.
+          </small>
+          <div class="floating-card-footer">
+            <span class="dot"></span> Delivered in under 3 hours
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section" id="products">
+      <div class="section-header">
+        <div>
+          <h2>Birthday Bouquets & Couple Gifts</h2>
+          <p>Handpicked combos crafted for couples celebrating love and birthdays.</p>
+        </div>
+        <p>Tap “Add to Cart” and then proceed to Checkout.</p>
+      </div>
+      <div class="products-grid" id="products-grid">
+        <!-- Cards are injected via JS -->
+      </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <span>© <strong>Bloom & Love</strong> · Crafted for romantic birthday surprises.</span>
-      <span>Made with 💗 for couples who love celebrating each other.</span>
+      <span>© <span class="highlight">LoveBloom</span> – Crafted with love for every celebration.</span>
+      <span>Secure payments • Fresh flowers • 24×7 support</span>
     </div>
   </footer>
 
   <script>
-    // --- Simple "cart" using localStorage so it works across pages ---
-    const STORAGE_KEY = "bloomLoveCart";
-
+    // Product data
     const products = [
       {
-        id: "bouquet-rose-romance",
-        name: "Rose Romance Duo Bouquet",
-        price: 1499,
-        tag: "Couple Favorite",
-        emoji: "🌹",
-        desc: "24 long-stem red roses wrapped in satin with a mini love note.",
+        id: 1,
+        name: "Midnight Rose Surprise",
+        description: "25 red roses, fairy lights & a premium pink heart box – perfect for romantic birthdays.",
+        price: 1899,
+        oldPrice: 2299,
+        rating: 4.9,
+        tag: "Best Seller",
+        image: "https://images.unsplash.com/photo-1487537023671-8dce1a785863?auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: "combo-midnight-magic",
-        name: "Midnight Magic Couple Combo",
-        price: 2299,
-        tag: "Best for Birthdays",
-        emoji: "🎂",
-        desc: "Rose bouquet, 500g cake, LED lights & scented candle for midnight surprise.",
+        id: 2,
+        name: "Pastel Promise Bouquet",
+        description: "Soft pastel roses & carnations wrapped in luxe paper for a dreamy celebration.",
+        price: 1599,
+        oldPrice: 1899,
+        rating: 4.7,
+        tag: "Trending",
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: "box-forever-us",
-        name: "Forever Us Memory Box",
-        price: 2599,
-        tag: "Keepsake Box",
-        emoji: "🎁",
-        desc: "Polaroid-style prints, message scrolls, roses & chocolates in a premium box.",
+        id: 3,
+        name: "Couple Celebration Combo",
+        description: "Bouquet + small cake + scented candle – all-in-one romantic gift set.",
+        price: 2199,
+        oldPrice: 2599,
+        rating: 4.8,
+        tag: "Combo",
+        image: "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: "bouquet-pastel-blush",
-        name: "Pastel Blush Couple Bouquet",
+        id: 4,
+        name: "Forever & Always Roses",
+        description: "Premium long-stem roses in a keepsake box they’ll remember forever.",
+        price: 2499,
+        oldPrice: 2899,
+        rating: 4.9,
+        tag: "Luxury",
+        image: "https://images.unsplash.com/photo-1455659817273-f96807779a8d?auto=format&fit=crop&w=800&q=80",
+      },
+      {
+        id: 5,
+        name: "Birthday Balloon & Bouquet Duo",
+        description: "Vibrant bouquet paired with ‘Happy Birthday’ helium balloons.",
         price: 1799,
-        tag: "Soft & Elegant",
-        emoji: "💐",
-        desc: "Pastel roses, baby’s breath & eucalyptus tied in blush pink wrap.",
+        oldPrice: 2099,
+        rating: 4.6,
+        tag: "Birthday",
+        image: "https://images.unsplash.com/photo-1526045612212-70caf35c9100?auto=format&fit=crop&w=800&q=80",
       },
       {
-        id: "combo-star-lit",
-        name: "Star-Lit Rooftop Vibes Kit",
-        price: 2799,
-        tag: "Atmosphere Set",
-        emoji: "✨",
-        desc: "Fairy lights, candles, rose petals & couple bouquet for DIY romantic setup.",
-      },
-      {
-        id: "mini-love-token",
-        name: "Mini Love Token Set",
-        price: 899,
-        tag: "Budget Friendly",
-        emoji: "❤️",
-        desc: "Single rose, scented candle tin & handwritten note for a sweet surprise.",
-      },
+        id: 6,
+        name: "Sweetheart Surprise Box",
+        description: "Mini roses, chocolates & a secret message drawer – ideal for couples.",
+        price: 1999,
+        oldPrice: 2399,
+        rating: 4.8,
+        tag: "Couple Special",
+        image: "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=800&q=80",
+      }
     ];
+
+    // Render products
+    const grid = document.getElementById("products-grid");
+    function renderProducts() {
+      grid.innerHTML = products
+        .map(
+          (p) => `
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" />
+            <span class="tag">${p.tag}</span>
+          </div>
+          <div class="product-content">
+            <h3 class="product-title">${p.name}</h3>
+            <p class="product-desc">${p.description}</p>
+            <div class="product-meta">
+              <div>
+                <span class="price">₹${p.price}</span>
+                <span class="old-price">₹${p.oldPrice}</span>
+              </div>
+              <div class="rating">⭐ ${p.rating}</div>
+            </div>
+            <span class="pill-muted">🎂 Perfect for birthday couples</span>
+            <div class="product-actions">
+              <button class="btn-outline" onclick="addToCart(${p.id})">Add to Cart</button>
+              <button class="btn-primary" onclick="buyNow(${p.id})">Buy Now</button>
+            </div>
+          </div>
+        </article>
+      `
+        )
+        .join("");
+    }
 
     function getCart() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return [];
-        return JSON.parse(raw);
-      } catch (e) {
+        return JSON.parse(localStorage.getItem("lb_cart") || "[]");
+      } catch {
         return [];
       }
     }
 
     function saveCart(cart) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      localStorage.setItem("lb_cart", JSON.stringify(cart));
       updateCartCount();
-    }
-
-    function addToCart(productId) {
-      const cart = getCart();
-      const existing = cart.find((item) => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        const product = products.find((p) => p.id === productId);
-        if (!product) return;
-        cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
-      }
-      saveCart(cart);
-      showAddedFeedback(productId);
     }
 
     function updateCartCount() {
       const cart = getCart();
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      const el = document.getElementById("cartCount");
-      if (el) el.textContent = totalItems;
+      const countEl = document.getElementById("cart-count");
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      countEl.textContent = totalItems;
     }
 
-    function renderProducts() {
-      const grid = document.getElementById("productGrid");
-      if (!grid) return;
-      grid.innerHTML = "";
-      products.forEach((p) => {
-        const card = document.createElement("article");
-        card.className = "product-card";
-        card.innerHTML = `
-          <div class="product-image">${p.emoji}</div>
-          <div class="product-tag">${p.tag}</div>
-          <div class="product-body">
-            <div class="product-title">${p.name}</div>
-            <div class="product-desc">${p.desc}</div>
-            <div class="product-meta">
-              <div class="price">₹${p.price.toLocaleString("en-IN")}</div>
-              <div class="badge-small">Birthday couples</div>
-            </div>
-          </div>
-          <div class="product-actions">
-            <button class="btn-add" data-id="${p.id}">
-              Add to Cart <span>+</span>
-            </button>
-            <button class="btn-ghost" onclick="window.location.href='checkout.html'">
-              Buy now
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-
-      grid.addEventListener("click", (e) => {
-        const btn = e.target.closest(".btn-add");
-        if (!btn) return;
-        const id = btn.getAttribute("data-id");
-        if (id) addToCart(id);
-      });
+    function addToCart(id) {
+      const product = products.find((p) => p.id === id);
+      if (!product) return;
+      const cart = getCart();
+      const existing = cart.find((item) => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      saveCart(cart);
+      alert("Added to cart: " + product.name);
     }
 
-    function showAddedFeedback(productId) {
-      const btn = document.querySelector(`.btn-add[data-id="${productId}"]`);
-      if (!btn) return;
-      const originalText = btn.textContent;
-      btn.textContent = "Added ✔";
-      btn.style.filter = "brightness(1.1)";
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.filter = "";
-      }, 900);
+    function buyNow(id) {
+      addToCart(id);
+      window.location.href = "checkout.html";
     }
 
     function scrollToProducts() {
-      const section = document.getElementById("productsSection");
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      document.getElementById("products").scrollIntoView({ behavior: "smooth" });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      renderProducts();
-      updateCartCount();
-    });
+    function goToCheckout() {
+      window.location.href = "checkout.html";
+    }
+
+    // Init
+    renderProducts();
+    updateCartCount();
   </script>
 </body>
 </html>
