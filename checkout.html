@@ -461,10 +461,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p class="note">We’ll handwrite this on a premium card and send it with your bouquet 💌</p>
             </div>
 
-            <button type="submit" class="btn-primary" >
-              Continue to Payment
-              <span>→</span>
-            </button>
+            <button type="submit" class="btn-primary">
+                <a href="https://love-bloomnew.netlify.app/payment" 
+           style="color:white; text-decoration:none; display:block; width:100%;">
+     Continue to Payment →
+  </a>
+</button>
+
             <div class="btn-secondary-link" onclick="window.location.href='index.html'">
               ← Continue shopping
             </div>
@@ -619,7 +622,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       localStorage.setItem("lb_customer", JSON.stringify(data));
-      window.location.href = "https://love-bloomnew.netlify.app/payment";
+      // window.location.href = "https://love-bloomnew.netlify.app/payment";
     });
 
     // Init
