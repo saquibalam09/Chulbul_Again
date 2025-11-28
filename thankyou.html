@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LoveBloom – Thank You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #ff4b7d;
+      --primary-light: #ff9bb5;
+      --bg: #fff5f8;
+      --dark: #2b2b2b;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --radius-xl: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #ffe1ec, #fff5f8 40%, #ffffff 80%);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(90deg, rgba(255, 245, 248, 0.94), rgba(255, 255, 255, 0.96));
+      border-bottom: 1px solid rgba(255, 192, 203, 0.4);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .logo span.icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffe6f0, #ff4b7d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 2.2rem auto 2.4rem;
+      padding: 0 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 26px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+      padding: 1.6rem 1.6rem 1.3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.6) 0, transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.5) 0, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(255, 192, 203, 0.4) 0, transparent 55%);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtext {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: #fff5fa;
+      border: 1px solid rgba(255, 151, 171, 0.8);
+      font-size: 0.8rem;
+      color: #c0392b;
+      margin-bottom: 0.9rem;
+    }
+
+    .order-summary {
+      font-size: 0.85rem;
+      color: #555;
+      text-align: left;
+      margin: 0 auto 0.9rem;
+      max-width: 420px;
+      border-radius: 16px;
+      background: #fffafc;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #f1d2dd;
+    }
+
+    .order-summary .line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.22rem;
+    }
+
+    .order-summary .line span:first-child {
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      margin-top: 0.7rem;
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(255, 75, 125, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 35px rgba(255, 75, 125, 0.5);
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 0.6rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 192, 203, 0.5);
+      background: #fff;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="icon">💐</span>
+        <span>LoveBloom</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page">
+      <div class="card">
+        <div class="confetti"></div>
+        <div class="card-inner">
+          <h1>Thank you, <span id="customer-name">Beautiful Soul</span>! 💝</h1>
+          <p class="subtext" id="hero-subtext">
+            Your surprise is now in the making. Our florists are handcrafting the perfect bouquet for the birthday couple.
+          </p>
+          <div class="pill">
+            ✅ Order confirmed • You’ll get an email & SMS shortly.
+          </div>
+
+          <div class="order-summary" id="order-summary">
+            <!-- Filled by JS -->
+          </div>
+
+          <button class="btn-primary" onclick="goHome()">
+            Send another birthday surprise
+            <span>→</span>
+          </button>
+
+          <p class="note">
+            This is a demo e-commerce flow built with pure HTML, CSS & JavaScript. Feel free to customize and use it in your projects. 🌸
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>LoveBloom – Turning birthdays into love stories since 2025.</span>
+      <span>Build with code, deliver with heart. 💖</span>
+    </div>
+  </footer>
+
+  <script>
+    function getCustomer() {
+      try {
+        return JSON.parse(localStorage.getItem("lb_customer") || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function getOrderSummary() {
+      try {
+        return JSON.parse(localStorage.getItem("lb_order_summary") || "null");
+      } catch {
+        return null;
+      }
+    }
+
+    function renderThankYou() {
+      const customer = getCustomer();
+      const summary = getOrderSummary();
+      const nameEl = document.getElementById("customer-name");
+      const heroSub = document.getElementById("hero-subtext");
+      const summaryEl = document.getElementById("order-summary");
+
+      if (customer && customer.customerName) {
+        nameEl.textContent = customer.customerName;
+      }
+
+      if (!summary) {
+        heroSub.textContent =
+          "Your demo order has been placed. This flow is for showcasing UI and does not process real payments.";
+        summaryEl.innerHTML =
+          '<div class="line"><span>Order status:</span><span>Confirmed (Demo)</span></div>';
+        return;
+      }
+
+      const date = new Date(summary.placedAt);
+      const when = date.toLocaleString();
+
+      summaryEl.innerHTML = `
+        <div class="line">
+          <span>Amount paid:</span>
+          <span>₹${summary.payable}</span>
+        </div>
+        <div class="line">
+          <span>Payment method:</span>
+          <span>${summary.method}</span>
+        </div>
+        <div class="line">
+          <span>Discount:</span>
+          <span>${summary.discount ? "₹" + summary.discount : "₹0"}</span>
+        </div>
+        <div class="line">
+          <span>Order status:</span>
+          <span>Confirmed (Demo)</span>
+        </div>
+        <div class="line">
+          <span>Placed at:</span>
+          <span>${when}</span>
+        </div>
+      `;
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    // Clear cart after successful order (demo)
+    function clearData() {
+      localStorage.removeItem("lb_cart");
+      // Keep customer + order summary so we can show details
+    }
+
+    clearData();
+    renderThankYou();
+  </script>
+</body>
+</html>
