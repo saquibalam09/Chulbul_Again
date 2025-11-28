@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bloom & Love | Romantic Bouquets & Gifts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #ff4b7d;
+      --primary-dark: #e23565;
+      --accent: #ffb347;
+      --bg: #0f172a;
+      --card-bg: #111827;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.75));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #fff0f5, #fb7185, #7c2d12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(248, 113, 113, 0.6);
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(248, 113, 113, 0.15);
+    }
+
+    .btn-pill {
+      border-radius: 999px;
+      padding: 7px 16px;
+      background: linear-gradient(120deg, var(--primary), var(--accent));
+      border: none;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(248, 113, 113, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-pill:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 30px rgba(248, 113, 113, 0.7);
+    }
+
+    .cart-pill {
+      border-radius: 999px;
+      padding: 6px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .cart-pill:hover {
+      background: rgba(30, 64, 175, 0.6);
+      border-color: rgba(248, 250, 252, 0.8);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .cart-count {
+      min-width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #0f172a;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* MAIN LAYOUT */
+    main {
+      flex: 1;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 18px 40px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2rem, 3vw + 0.5rem, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(110deg, #fecaca, #fb7185, #fed7aa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 480px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badge {
+      border-radius: 999px;
+      padding: 6px 12px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .hero-secondary {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-secondary span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.25);
+    }
+
+    .hero-card {
+      border-radius: 24px;
+      padding: 20px;
+      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.18), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), #020617 70%);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .hero-card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge-soft {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.15);
+      color: #bbf7d0;
+      font-size: 0.7rem;
+    }
+
+    .hero-main-visual {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-bouquet {
+      height: 170px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 20% 0, #fee2e2, #fb7185, #4b164c);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.4rem;
+    }
+
+    .hero-bouquet span {
+      position: relative;
+      top: -12px;
+    }
+
+    .hero-note {
+      border-radius: 16px;
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-note strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-top: 10px;
+    }
+
+    /* PRODUCT SECTION */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 1.1rem;
+    }
+
+    .section-header p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.7), #020617);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 150px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 0 0, #fee2e2, #fb7185, #4c1d95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(248, 250, 252, 0.6);
+    }
+
+    .product-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .product-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .product-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #f97316;
+    }
+
+    .badge-small {
+      font-size: 0.75rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--muted);
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .btn-add {
+      flex: 1;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: linear-gradient(120deg, var(--primary), var(--accent));
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      box-shadow: 0 10px 22px rgba(248, 113, 113, 0.6);
+    }
+
+    .btn-add:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 14px 30px rgba(248, 113, 113, 0.8);
+    }
+
+    .btn-ghost {
+      margin-left: 10px;
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: transparent;
+      font-size: 0.8rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(30, 64, 175, 0.6);
+      border-color: rgba(248, 250, 252, 0.9);
+      color: var(--text);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 18px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: rgba(2, 6, 23, 0.98);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner span strong {
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-card {
+        order: -1;
+      }
+      .nav {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        margin-left: auto;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .hero-copy p {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">💐</div>
+        <div>Bloom & Love</div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="checkout.html">Checkout</a>
+        <button class="cart-pill" onclick="window.location.href='checkout.html'">
+          🛒 <span>Cart</span>
+          <div class="cart-count" id="cartCount">0</div>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>
+            Make their <span class="gradient-text">birthday night magical</span>
+            with curated couple bouquets & gifts.
+          </h1>
+          <p>
+            Handpicked romantic bouquets, candles, and surprise boxes designed
+            especially for couples. Same-day delivery available in major cities.
+          </p>
+          <div class="hero-badges">
+            <div class="hero-badge">✨ Couple-special curation</div>
+            <div class="hero-badge">🚚 Express midnight delivery</div>
+            <div class="hero-badge">🎁 Free handwritten note</div>
+          </div>
+          <div class="hero-cta">
+            <button class="btn-pill" onclick="scrollToProducts()">
+              Browse Birthday Combos
+              <span>↓</span>
+            </button>
+            <div class="hero-secondary">
+              <span class="dot"></span> <span>Trusted by 10,000+ celebrations</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-title">
+              <div>
+                <div style="font-size:0.78rem; color:var(--muted);">Tonight’s Bestseller</div>
+                <div style="font-weight:600; margin-top:2px;">Midnight Surprise Couple Box</div>
+              </div>
+              <div class="badge-soft">Delivering till 12:30 AM</div>
+            </div>
+
+            <div class="hero-main-visual">
+              <div class="hero-bouquet">
+                <span>🌹🎂🎁</span>
+              </div>
+              <div class="hero-note">
+                <strong>Includes:</strong> premium rose bouquet, scented candle,
+                mini cake, fairy lights & custom note for your partner.
+                <div class="hero-tagline">Perfect for “You mean the world to me” moments.</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="productsSection">
+        <div class="section-header">
+          <div>
+            <h2>Birthday Bouquets & Couple Gifts</h2>
+            <p>Tap “Add to Cart” and complete your surprise in under a minute.</p>
+          </div>
+          <button class="btn-ghost" onclick="window.location.href='checkout.html'">
+            View Cart 🛒
+          </button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+          <!-- Products inserted by JS -->
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <strong>Bloom & Love</strong> · Crafted for romantic birthday surprises.</span>
+      <span>Made with 💗 for couples who love celebrating each other.</span>
+    </div>
+  </footer>
+
+  <script>
+    // --- Simple "cart" using localStorage so it works across pages ---
+    const STORAGE_KEY = "bloomLoveCart";
+
+    const products = [
+      {
+        id: "bouquet-rose-romance",
+        name: "Rose Romance Duo Bouquet",
+        price: 1499,
+        tag: "Couple Favorite",
+        emoji: "🌹",
+        desc: "24 long-stem red roses wrapped in satin with a mini love note.",
+      },
+      {
+        id: "combo-midnight-magic",
+        name: "Midnight Magic Couple Combo",
+        price: 2299,
+        tag: "Best for Birthdays",
+        emoji: "🎂",
+        desc: "Rose bouquet, 500g cake, LED lights & scented candle for midnight surprise.",
+      },
+      {
+        id: "box-forever-us",
+        name: "Forever Us Memory Box",
+        price: 2599,
+        tag: "Keepsake Box",
+        emoji: "🎁",
+        desc: "Polaroid-style prints, message scrolls, roses & chocolates in a premium box.",
+      },
+      {
+        id: "bouquet-pastel-blush",
+        name: "Pastel Blush Couple Bouquet",
+        price: 1799,
+        tag: "Soft & Elegant",
+        emoji: "💐",
+        desc: "Pastel roses, baby’s breath & eucalyptus tied in blush pink wrap.",
+      },
+      {
+        id: "combo-star-lit",
+        name: "Star-Lit Rooftop Vibes Kit",
+        price: 2799,
+        tag: "Atmosphere Set",
+        emoji: "✨",
+        desc: "Fairy lights, candles, rose petals & couple bouquet for DIY romantic setup.",
+      },
+      {
+        id: "mini-love-token",
+        name: "Mini Love Token Set",
+        price: 899,
+        tag: "Budget Friendly",
+        emoji: "❤️",
+        desc: "Single rose, scented candle tin & handwritten note for a sweet surprise.",
+      },
+    ];
+
+    function getCart() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        return JSON.parse(raw);
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function addToCart(productId) {
+      const cart = getCart();
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        const product = products.find((p) => p.id === productId);
+        if (!product) return;
+        cart.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+      }
+      saveCart(cart);
+      showAddedFeedback(productId);
+    }
+
+    function updateCartCount() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const el = document.getElementById("cartCount");
+      if (el) el.textContent = totalItems;
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+      products.forEach((p) => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-image">${p.emoji}</div>
+          <div class="product-tag">${p.tag}</div>
+          <div class="product-body">
+            <div class="product-title">${p.name}</div>
+            <div class="product-desc">${p.desc}</div>
+            <div class="product-meta">
+              <div class="price">₹${p.price.toLocaleString("en-IN")}</div>
+              <div class="badge-small">Birthday couples</div>
+            </div>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add" data-id="${p.id}">
+              Add to Cart <span>+</span>
+            </button>
+            <button class="btn-ghost" onclick="window.location.href='checkout.html'">
+              Buy now
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      grid.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn-add");
+        if (!btn) return;
+        const id = btn.getAttribute("data-id");
+        if (id) addToCart(id);
+      });
+    }
+
+    function showAddedFeedback(productId) {
+      const btn = document.querySelector(`.btn-add[data-id="${productId}"]`);
+      if (!btn) return;
+      const originalText = btn.textContent;
+      btn.textContent = "Added ✔";
+      btn.style.filter = "brightness(1.1)";
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.filter = "";
+      }, 900);
+    }
+
+    function scrollToProducts() {
+      const section = document.getElementById("productsSection");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      updateCartCount();
+    });
+  </script>
+</body>
+</html>
